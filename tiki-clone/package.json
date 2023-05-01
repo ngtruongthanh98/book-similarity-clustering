@@ -9,10 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "vuestic-ui": "^1.6.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
+    "sass": "^1.32.11",
     "vite": "^4.3.2"
   }
 }
