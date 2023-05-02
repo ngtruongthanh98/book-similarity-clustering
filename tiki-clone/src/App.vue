@@ -1,11 +1,11 @@
 <script setup>
-import TextInput from './components/TextInput/index.vue'
+import Navbar from './components/Navbar/index.vue'
 
 
 </script>
 
 <template>
-  <TextInput label="Name"/>
+  <Navbar />
   <router-view />
 </template>
 
