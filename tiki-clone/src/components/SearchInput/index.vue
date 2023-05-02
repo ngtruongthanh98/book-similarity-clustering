@@ -32,6 +32,7 @@ export default {
     width: 680px;
     padding: 0;
     border: 1px solid rgb(221, 221, 227);
+    border-radius: 8px !important;
 
     .va-input-wrapper__append-inner {
       background: #ffffff;

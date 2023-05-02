@@ -6,17 +6,30 @@
 
         <SearchInput/>
       </div>
-      <div class="navbar-main__right">Right</div>
+      <div class="navbar-main__right">
+        <IconButton buttonName="Trang chủ" imageUrl="https://salt.tikicdn.com/ts/upload/b4/90/74/6baaecfa664314469ab50758e5ee46ca.png" imageUrlActive="https://salt.tikicdn.com/ts/upload/32/56/db/d919a4fea46f498b5f4708986d82009d.png" :isActive="isHomeRoute"/>
+
+        <IconButton buttonName="Astra" imageUrl="https://salt.tikicdn.com/ts/upload/41/28/7d/4713aa0d2855c5c770799f248692f0c5.png" imageUrlActive="https://salt.tikicdn.com/ts/upload/90/77/3e/caed2497697df4ca9b8fba5d92cf6278.png"/>
+
+        <IconButton buttonName="Tài khoản" imageUrl="https://salt.tikicdn.com/ts/upload/07/d5/94/d7b6a3bd7d57d37ef6e437aa0de4821b.png"/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import SearchInput from '../SearchInput/index.vue'
+import IconButton from '../IconButton/index.vue'
 
 export default {
   components: {
-    SearchInput
+    SearchInput,
+    IconButton
+  },
+  computed: {
+    isHomeRoute() {
+      return this.$route.name === "home";
+    },
   }
 }
 </script>
@@ -34,6 +47,7 @@ export default {
   &-main {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     &__left {
       display: flex;
@@ -50,6 +64,8 @@ export default {
     }
 
     &__right {
+      margin-left: 48px;
+      display: flex;
     }
   }
 }
