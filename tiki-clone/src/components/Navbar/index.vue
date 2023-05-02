@@ -11,7 +11,13 @@
 
         <IconButton buttonName="Astra" imageUrl="https://salt.tikicdn.com/ts/upload/41/28/7d/4713aa0d2855c5c770799f248692f0c5.png" imageUrlActive="https://salt.tikicdn.com/ts/upload/90/77/3e/caed2497697df4ca9b8fba5d92cf6278.png"/>
 
-        <IconButton buttonName="Tài khoản" imageUrl="https://salt.tikicdn.com/ts/upload/07/d5/94/d7b6a3bd7d57d37ef6e437aa0de4821b.png"/>
+        <IconButton buttonName="Tài khoản" imageUrl="https://salt.tikicdn.com/ts/upload/07/d5/94/d7b6a3bd7d57d37ef6e437aa0de4821b.png" />
+
+        <div class="cart-zone">
+          <div class="divider"></div>
+
+          <IconButton className="cart-wrapper" imageUrlActive="https://salt.tikicdn.com/ts/upload/51/e2/92/8ca7e2cc5ede8c09e34d1beb50267f4f.png" isActive />
+        </div>
       </div>
     </div>
   </div>
@@ -66,6 +72,27 @@ export default {
     &__right {
       margin-left: 48px;
       display: flex;
+
+      .cart-zone {
+        display: flex;
+        align-items: center;
+
+        .divider {
+          width: 1px;
+          height: 24px;
+          border-right: 1px solid rgb(221, 221, 227);;
+          margin-right: 24px;
+          margin-left: 24px;
+        }
+
+        .cart-wrapper {
+          height: 40px;
+          width: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
     }
   }
 }

@@ -1,5 +1,11 @@
 <template>
-  <div class="icon-button" :class="isActive ? 'is-active' : ''">
+    <div
+    class="icon-button"
+    :class="[
+      isActive ? 'is-active' : '',
+      className
+    ]"
+  >
     <img class="icon" :src="isActive ? imageUrlActive : imageUrl" alt="Home icon" width="24" height="24">
     <div class="button-name">{{ buttonName }}</div>
   </div>
@@ -22,6 +28,10 @@ export default {
     isActive: {
       type: Boolean,
       default: false
+    },
+    className: {
+      type: String,
+      default: ''
     }
   }
 }
