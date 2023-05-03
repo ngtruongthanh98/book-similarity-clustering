@@ -2,7 +2,9 @@
   <div class="sidebar">
     <SidebarItemGroup title="Nổi bật" :itemList="HOME_SIDEBAR.OUTSTANDING"/>
 
-    <SidebarItemGroup title="Danh mục"/>
+    <SidebarItemGroup title="Danh mục" :itemList="HOME_SIDEBAR.CATEGORY"/>
+
+    <SidebarItemGroup :itemList="HOME_SIDEBAR.SHOP"/>
   </div>
 </template>
 
