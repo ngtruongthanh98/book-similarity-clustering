@@ -5,6 +5,8 @@
 
       <div class="main">
         <PromotionContainer />
+        <FeaturedCollection />
+        <GoodPriceToday />
       </div>
 
     </div>
@@ -14,11 +16,15 @@
 <script>
 import Sidebar from './Sidebar/index.vue'
 import PromotionContainer from './PromotionContainer/index.vue'
+import FeaturedCollection from './FeaturedCollection/index.vue'
+import GoodPriceToday from './GoodPriceToday/index.vue'
 
 export default {
   components: {
     Sidebar,
-    PromotionContainer
+    PromotionContainer,
+    FeaturedCollection,
+    GoodPriceToday
   }
 }
 </script>
