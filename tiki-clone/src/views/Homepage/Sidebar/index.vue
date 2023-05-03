@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import SidebarItemGroup from '../SidebarItemGroup/index.vue'
+import SidebarItemGroup from './SidebarItemGroup/index.vue'
 import { HOME_SIDEBAR } from '../../../constants'
 
 export default {

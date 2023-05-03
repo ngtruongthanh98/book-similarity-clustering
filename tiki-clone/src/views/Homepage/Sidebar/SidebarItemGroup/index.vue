@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import SidebarItem from '../SidebarItem/index.vue'
+import SidebarItem from './SidebarItem/index.vue'
 
 export default {
   components: {
@@ -36,9 +36,6 @@ export default {
 
   padding: 8px 12px;
   border-radius: 8px;
-
-  // Temporary fix
-  margin-left: 36px;
 
   .title {
     margin-bottom: 8px;
