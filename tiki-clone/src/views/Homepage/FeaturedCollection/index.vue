@@ -32,6 +32,7 @@ export default {
     background: #ffffff;
     border-radius: 8px;
     min-height: 278px;
+    width: 1138px;
 
     .title {
       margin-bottom: 12px;
@@ -46,7 +47,7 @@ export default {
       .image-wrapper {
         padding: 0px 8px;
         .image {
-          width: 171px;
+          width: 169px;
           height: 255.5px;
 
           border: 1px solid rgba(0, 0, 0, 0.05);
