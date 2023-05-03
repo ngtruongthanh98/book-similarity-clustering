@@ -34,7 +34,8 @@
 
         <div class="deal-quantity">
           <div class="deal-progress" :style="{ width: ele.progress + '%' }"></div>
-          <span class="inner-text">Vừa mới mở bán</span>
+          <span class="inner-text">{{ ele.innerText }}</span>
+          <img v-if="ele.progress >= 50" class="fire-icon" src="https://frontend.tikicdn.com/_desktop-next/static/img/fire_icon.svg" alt="fire-icon">
         </div>
       </div>
 
@@ -52,49 +53,56 @@ export default {
           discount: '-40%',
           newPrice: '59.000',
           unit: '₫',
-          progress: '20'
+          progress: '50',
+          innerText: 'Đã bán 6'
         },
         {
           imageUrl: 'https://salt.tikicdn.com/cache/280x280/ts/product/90/df/b3/887a5353b09f029b778edaac1dc5684a.jpg.webp',
           discount: '-41%',
           newPrice: '50.000',
           unit: '₫',
-          progress: '25'
+          progress: '90',
+          innerText: 'Sắp bán hết'
         },
         {
           imageUrl: 'https://salt.tikicdn.com/cache/280x280/ts/product/d0/04/96/ba43c5e0e7bf36677eca801420b7cda1.png.webp',
           discount: '-40%',
           newPrice: '93.000',
           unit: '₫',
-          progress: '15'
+          progress: '0',
+          innerText: 'Vừa mới mở bán'
         },
         {
           imageUrl: 'https://salt.tikicdn.com/cache/280x280/ts/product/9c/b3/8e/3ff8d70257c97a38d377eeaa564c7f37.jpg.webp',
           discount: '-42%',
           newPrice: '109.000',
           unit: '₫',
-          progress: '10'
+          progress: '0',
+          innerText: 'Vừa mới mở bán'
         },
         {
           imageUrl: 'https://salt.tikicdn.com/cache/280x280/ts/product/06/6e/3a/82b51c0fafcd6a00ec46766773343169.jpg.webp',
           discount: '-25%',
           newPrice: '116.000',
           unit: '₫',
-          progress: '10'
+          progress: '30',
+          innerText: 'Đã bán 3'
         },
         {
           imageUrl: 'https://salt.tikicdn.com/cache/280x280/ts/product/41/70/78/2fe24b310f97f81e927e0238bd6b5726.jpg.webp',
           discount: '-13%',
           newPrice: '210.000',
           unit: '₫',
-          progress: '15'
+          progress: '40',
+          innerText: 'Đã bán 7'
         },
         {
           imageUrl: 'https://salt.tikicdn.com/cache/280x280/ts/product/02/9f/0e/92ac0533439de4351247a5c4fea2a036.jpg.webp',
           discount: '-41%',
           newPrice: '105.000',
           unit: '₫',
-          progress: '10'
+          progress: '0',
+          innerText: 'Vừa mới mở bán'
         }
       ]
     }
@@ -250,6 +258,15 @@ export default {
             width: 100%;
             position: absolute;
             text-align: center;
+          }
+
+          .fire-icon {
+            z-index: 10;
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            bottom: 4px;
+            left: 5px;
           }
         }
       }
