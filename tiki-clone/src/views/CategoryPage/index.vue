@@ -1,22 +1,16 @@
 <template>
-  <div class="home-page">
-    <Sidebar />
+  <div class="category-page">
+    Category Page
   </div>
 </template>
-
 <script>
-import Sidebar from './Sidebar/index.vue'
-
 export default {
-  components: {
-    Sidebar
-  }
+
 }
 </script>
 <style lang="scss" scoped>
-  .home-page {
+  .category-page {
     background-color: #f5f5fa;
     height: calc(100vh - 80px - 8px);
-    padding-top: 16px;
   }
 </style>
