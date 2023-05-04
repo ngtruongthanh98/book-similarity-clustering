@@ -191,6 +191,7 @@ export default {
 
         .image-wrapper {
           position: relative;
+          cursor: pointer;
 
           .tiki-freeship {
             position: absolute;

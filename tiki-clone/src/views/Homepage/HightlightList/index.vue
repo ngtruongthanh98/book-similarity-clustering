@@ -56,8 +56,6 @@ export default {
     min-height: 265px;
     width: 1138px;
 
-    margin-bottom: 48px;
-
     .title {
       margin-bottom: 12px;
       font-weight: 700;
@@ -74,7 +72,6 @@ export default {
         padding: 0px 8px;
 
         .image-wrapper {
-          // padding: 0px 8px;
           border: 1px solid rgba(0, 0, 0, 0.05);
           border-radius: 8px;
           cursor: pointer;
@@ -82,9 +79,6 @@ export default {
           max-width: 171px;
 
           .image {
-            // width: 169px;
-            // height: 255.5px;
-
             border: 1px solid rgba(0, 0, 0, 0.05);
             border-radius: 8px;
             cursor: pointer;
