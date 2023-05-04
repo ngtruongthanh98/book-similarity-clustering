@@ -29,7 +29,7 @@ export default {
 .search-input {
   .va-input-wrapper__field {
     height: 40px;
-    width: 680px;
+    width: 838px;
     padding: 0;
     border: 1px solid rgb(221, 221, 227);
     border-radius: 8px !important;

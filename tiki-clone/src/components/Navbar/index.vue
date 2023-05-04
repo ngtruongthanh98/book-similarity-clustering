@@ -20,6 +20,22 @@
         </div>
       </div>
     </div>
+
+    <div class="navbar-sub">
+      <div class="navigate-container">
+        <div v-for="(item, index) in ITEM_LIST" :key="index" class="item">
+          {{ item }}
+        </div>
+      </div>
+
+      <div class="address-container">
+        <img class="location-icon" src="https://salt.tikicdn.com/ts/upload/88/5c/9d/f5ee506836792eb7775e527ef8350a44.png" alt="Location" width="20" height="20" />
+
+        <div class="title">Giao đến:</div>
+
+        <div class="address">H. Nhà Bè, X. Phước Kiển, Hồ Chí Minh</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -31,6 +47,20 @@ export default {
   components: {
     SearchInput,
     IconButton
+  },
+  data() {
+    return {
+      ITEM_LIST: [
+        'trái cây',
+        'thịt, trứng',
+        'rau củ quả',
+        'sữa, bơ, phô mai',
+        'hải sản',
+        'gạo, mì ăn liền',
+        'đồ uống, bia rượu',
+        'bánh kẹo'
+      ]
+    }
   },
   computed: {
     isHomeRoute() {
@@ -67,12 +97,13 @@ export default {
 
       .tiki-logo {
         margin-right: 48px;
+        cursor: pointer;
       }
     }
 
     &__right {
-      margin-left: 48px;
       display: flex;
+      justify-content: end;
 
       .cart-zone {
         display: flex;
@@ -82,8 +113,8 @@ export default {
           width: 1px;
           height: 24px;
           border-right: 1px solid rgb(221, 221, 227);;
-          margin-right: 24px;
-          margin-left: 24px;
+          margin-right: 12px;
+          margin-left: 12px;
         }
 
         .cart-wrapper {
@@ -92,7 +123,72 @@ export default {
           display: flex;
           justify-content: center;
           align-items: center;
+
+          .icon {
+            margin-right: 0;
+          }
         }
+      }
+    }
+  }
+
+  &-sub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1392px;
+
+    .navigate-container {
+      display: flex;
+      width: 872px;
+      margin-left: 105px;
+      margin-top: 8px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      overflow: hidden;
+
+      .item {
+        margin-right: 8px;
+        display: block;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+        color: rgb(128, 128, 137);
+        margin-right: 12px;
+        white-space: nowrap;
+
+        cursor: pointer;
+      }
+    }
+
+    .address-container {
+      display: flex;
+      margin-top: 8px;
+      width: 350px;
+
+      .location-icon {
+        margin-right: 4px;
+      }
+
+      .title {
+        color: rgb(128, 128, 137);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+        padding-right: 4px;
+      }
+
+      .address {
+        text-decoration: underline;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 150%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: rgb(39, 39, 42);
+
+        cursor: pointer;
       }
     }
   }
