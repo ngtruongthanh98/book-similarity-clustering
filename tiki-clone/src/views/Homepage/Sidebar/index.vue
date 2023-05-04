@@ -28,6 +28,16 @@ export default {
     display: flex;
     flex-direction: column;
 
+    max-height: 100vh;
+    position: sticky;
+    overflow-y: scroll;
+    top: 16px;
+    width: 282px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
     .sidebar-item-group {
       margin-bottom: 16px;
     }
