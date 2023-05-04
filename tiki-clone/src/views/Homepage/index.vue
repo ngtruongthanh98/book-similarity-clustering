@@ -9,6 +9,7 @@
         <GoodPriceToday />
         <HomeBrand />
         <GoodPriceBrand />
+        <HightlightList />
       </div>
 
     </div>
@@ -22,6 +23,7 @@ import FeaturedCollection from './FeaturedCollection/index.vue'
 import GoodPriceToday from './GoodPriceToday/index.vue'
 import HomeBrand from './HomeBrand/index.vue'
 import GoodPriceBrand from './GoodPriceBrand/index.vue'
+import HightlightList from './HightlightList/index.vue'
 
 export default {
   components: {
@@ -30,7 +32,8 @@ export default {
     FeaturedCollection,
     GoodPriceToday,
     HomeBrand,
-    GoodPriceBrand
+    GoodPriceBrand,
+    HightlightList
   }
 }
 </script>
