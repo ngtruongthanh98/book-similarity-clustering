@@ -7,6 +7,9 @@
         <PromotionContainer />
         <FeaturedCollection />
         <GoodPriceToday />
+        <HomeBrand />
+        <GoodPriceBrand />
+        <HightlightList />
       </div>
 
     </div>
@@ -18,13 +21,19 @@ import Sidebar from './Sidebar/index.vue'
 import PromotionContainer from './PromotionContainer/index.vue'
 import FeaturedCollection from './FeaturedCollection/index.vue'
 import GoodPriceToday from './GoodPriceToday/index.vue'
+import HomeBrand from './HomeBrand/index.vue'
+import GoodPriceBrand from './GoodPriceBrand/index.vue'
+import HightlightList from './HightlightList/index.vue'
 
 export default {
   components: {
     Sidebar,
     PromotionContainer,
     FeaturedCollection,
-    GoodPriceToday
+    GoodPriceToday,
+    HomeBrand,
+    GoodPriceBrand,
+    HightlightList
   }
 }
 </script>
