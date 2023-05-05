@@ -7,7 +7,7 @@
         <SearchInput/>
       </div>
       <div class="navbar-main__right">
-        <IconButton buttonName="Trang chủ" imageUrl="https://salt.tikicdn.com/ts/upload/b4/90/74/6baaecfa664314469ab50758e5ee46ca.png" imageUrlActive="https://salt.tikicdn.com/ts/upload/32/56/db/d919a4fea46f498b5f4708986d82009d.png" :isActive="isHomeRoute"/>
+        <IconButton buttonName="Trang chủ" imageUrl="https://salt.tikicdn.com/ts/upload/b4/90/74/6baaecfa664314469ab50758e5ee46ca.png" imageUrlActive="https://salt.tikicdn.com/ts/upload/32/56/db/d919a4fea46f498b5f4708986d82009d.png" :isActive="isHomeRoute" @click="onClickGotoHome"/>
 
         <IconButton buttonName="Astra" imageUrl="https://salt.tikicdn.com/ts/upload/41/28/7d/4713aa0d2855c5c770799f248692f0c5.png" imageUrlActive="https://salt.tikicdn.com/ts/upload/90/77/3e/caed2497697df4ca9b8fba5d92cf6278.png"/>
 
@@ -23,7 +23,7 @@
 
     <div class="navbar-sub">
       <div class="navigate-container">
-        <div v-for="(item, index) in ITEM_LIST" :key="index" class="item">
+        <div v-for="(item, index) in recommendList" :key="index" class="item">
           {{ item }}
         </div>
       </div>
@@ -59,6 +59,15 @@ export default {
         'gạo, mì ăn liền',
         'đồ uống, bia rượu',
         'bánh kẹo'
+      ],
+      ITEM_LIST_BOOKS: [
+        'cây cam ngọt của tôi',
+        'triết học',
+        'nguyễn nhật ánh',
+        'không gia đình',
+        'vẻ đẹp của sự cô đơn',
+        'tâm lý học',
+        'hiểu về trái tim'
       ]
     }
   },
@@ -66,6 +75,13 @@ export default {
     isHomeRoute() {
       return this.$route.name === "home";
     },
+    recommendList() {
+      if(this.$route.name === 'home') {
+        return this.ITEM_LIST
+      }
+
+      return this.ITEM_LIST_BOOKS
+    }
   },
   methods: {
     onClickGotoHome() {
