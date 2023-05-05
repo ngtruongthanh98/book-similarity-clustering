@@ -2,7 +2,7 @@
   <div class="navbar">
     <div class="navbar-main">
       <div class="navbar-main__left">
-        <img class="tiki-logo" src="/tiki-logo-brand.png" alt="Tiki logo" height="40" width="57">
+        <img class="tiki-logo" src="/tiki-logo-brand.png" alt="Tiki logo" height="40" width="57" @click="onClickGotoHome">
 
         <SearchInput/>
       </div>
@@ -66,6 +66,11 @@ export default {
     isHomeRoute() {
       return this.$route.name === "home";
     },
+  },
+  methods: {
+    onClickGotoHome() {
+      this.$router.push({ name: 'home' });
+    }
   }
 }
 </script>

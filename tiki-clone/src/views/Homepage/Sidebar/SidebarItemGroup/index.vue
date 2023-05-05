@@ -2,7 +2,7 @@
   <div class="sidebar-item-group">
     <div class="title">{{ title }}</div>
 
-    <SidebarItem v-for="(ele, index) in itemList" :key="index" :imageUrl="ele.imageUrl" :itemName="ele.itemName"/>
+    <SidebarItem v-for="(ele, index) in itemList" :key="index" :imageUrl="ele.imageUrl" :itemName="ele.itemName" :routeName="ele.routeName" />
   </div>
 </template>
 

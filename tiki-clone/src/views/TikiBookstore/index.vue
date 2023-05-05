@@ -1,6 +1,6 @@
 <template>
-  <div class="category-page">
-    Category Page
+  <div class="tiki-bookstore-page">
+    Tiki Bookstore
   </div>
 </template>
 <script>
@@ -9,8 +9,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .category-page {
+  .tiki-bookstore-page {
     background-color: #f5f5fa;
-    height: calc(100vh - 80px - 8px);
+    // height: calc(100vh - 80px - 8px);
   }
 </style>
