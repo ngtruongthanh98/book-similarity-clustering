@@ -7,13 +7,13 @@ app = Flask(__name__)
 CORS(app)
 
 # read all records from the CSV file and filter the columns
-books = pd.read_csv('./database/books.csv', delimiter=';',
+books = pd.read_csv('../database/books.csv', delimiter=';',
                     encoding='ISO-8859-1', on_bad_lines='skip')
 
-ratings = pd.read_csv('./database/ratings.csv', delimiter=';',
+ratings = pd.read_csv('../database/ratings.csv', delimiter=';',
                       encoding='ISO-8859-1')
 
-users = pd.read_csv('./database/users.csv', delimiter=';',
+users = pd.read_csv('../database/users.csv', delimiter=';',
                     encoding='ISO-8859-1')
 
 # define a function to convert snake case to camel case with hyphens
