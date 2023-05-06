@@ -1,15 +1,21 @@
 <template>
   <div class="sidebar-bookstore">
     <ProductCategories />
+    <LocationWrapper />
+    <ServiceFilter />
   </div>
 </template>
 
 <script>
 import ProductCategories from './ProductCategories/index.vue'
+import LocationWrapper from './LocationWrapper/index.vue'
+import ServiceFilter from './ServiceFilter/index.vue'
 
 export default {
   components: {
-    ProductCategories
+    ProductCategories,
+    LocationWrapper,
+    ServiceFilter
   }
 }
 </script>
