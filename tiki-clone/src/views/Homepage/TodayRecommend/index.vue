@@ -15,41 +15,41 @@
     <div class="today-recommend__body">
       <div class="content">
 
-        <div v-for="(ele, index) in PRODUCT_LIST" :key="index" class="product-item" @click="onClickProductDetail(ele.productId)">
+        <div v-for="(ele, index) in productList" :key="index" class="product-item" @click="onClickProductDetail(ele.isbn)">
           <div class="styled-item">
             <div class="thumbnail">
               <img class="official-image" src="https://salt.tikicdn.com/ts/upload/5d/4c/f7/0261315e75127c2ff73efd7a1f1ffdf2.png" alt="Official" width="68" height="14">
 
               <div class="thumbnail-wrapper">
-                <img :src="ele.imageUrl" alt="Product image" width="183" height="183">
+                <img :src="ele.imageURLL" alt="Product image" width="183" height="183">
               </div>
 
             </div>
 
             <div class="description-wrapper">
               <div class="info">
-                <div class="name">{{ ele.name }}</div>
+                <div class="name">{{ ele.bookTitle }}</div>
 
                 <div class="rate-wrapper">
                   <div class="full-rating">
-                    <span class="score">{{ ele.score }}</span>
+                    <span class="score">{{ ele.score || 4 }}</span>
 
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" size="14" color="#fdd836" height="14" width="14" xmlns="http://www.w3.org/2000/svg" style="color: rgb(253, 216, 54);"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
                   </div>
 
                   <div class="sold-amount">
                     <div class="divider"></div>
-                    <div class="quantity">Đã bán {{ ele.quantity }}</div>
+                    <div class="quantity">Đã bán {{ ele.quantity || '1000+' }}</div>
                   </div>
                 </div>
 
                 <div class="price-discount has-discount">
-                  <div class="price-discount__price">{{ ele.price }} ₫</div>
-                  <div class="price-discount__discount">-{{ele.discount}}%</div>
+                  <div class="price-discount__price">{{ ele.price || '150.000' }} ₫</div>
+                  <div class="price-discount__discount">-{{ele.discount || 25}}%</div>
                 </div>
 
                 <div class="badge-under-price">
-                  Tặng tới {{ ele.backAmount }} ASA ({{ ele.backAmountPrice }} ₫)
+                  Tặng tới {{ ele.backAmount || 10 }} ASA ({{ ele.backAmountPrice || 365 }} ₫)
                   <br>
                   ≈ 0.5% hoàn tiền
                 </div>
@@ -67,16 +67,22 @@
         </div>
       </div>
 
-      <div class="view-more-button">
+      <div class="view-more-button" @click="onClickLoadMore">
         Xem Thêm
       </div>
     </div>
   </div>
 </template>
+
 <script>
+import { getBookByPage } from '../../../services/books'
+
 export default {
   data() {
     return {
+      currentPage: 1,
+      productList: [],
+      isLoading: false,
       HEADER_WIDGETS: [
         {
           isActive: true,
@@ -509,9 +515,36 @@ export default {
       ]
     }
   },
+  async mounted() {
+    try {
+      this.isLoading = true
+
+      const res = await this.getBookByPage(this.currentPage)
+      this.productList = res.data
+
+      this.isLoading = false
+    } catch (error) {
+      console.log(error);
+    }
+  },
   methods: {
+    getBookByPage,
     onClickProductDetail(productId) {
       this.$router.push(`/nha-sach-tiki/${productId}`);
+    },
+    async onClickLoadMore() {
+      this.currentPage = this.currentPage + 1;
+
+      try {
+        this.isLoading = true
+
+        const res = await this.getBookByPage(this.currentPage)
+        this.productList = this.productList.concat(res.data)
+
+        this.isLoading = false
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 }
