@@ -4,11 +4,11 @@ import chardet
 from collections import Counter
 
 
-df = pd.read_csv('ratings.csv', delimiter=';', names=[
+df = pd.read_csv('../database/ratings.csv', delimiter=';', names=[
                  'User-ID', 'ISBN', 'Book-Rating'], skiprows=1, encoding='ISO-8859-1')
 
-f = 1100000
-t = 1200000
+f = 900000
+t = -1
 df = df.iloc[f:t, :]  # Select rows from 0 to 49999, and all columns
 
 print(df)
@@ -34,9 +34,6 @@ for user, group in df.groupby('User-ID'):
             if book_pair not in pair_counts:
                 pair_counts[book_pair] = 0
             pair_counts[book_pair] += 1
-
-# Remove book pairs with count less than 10
-pair_counts = {k: v for k, v in pair_counts.items() if v > 10}
 
 # Write the results to a JSON file
 with open(f'{f}to{t}.json', 'w') as f:
