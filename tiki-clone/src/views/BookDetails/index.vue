@@ -152,16 +152,20 @@
 
 
         <RelatedProducts />
+
+        <DetailInfo />
     </div>
   </div>
 </template>
 
 <script>
 import RelatedProducts from "./RelatedProducts/index.vue"
+import DetailInfo from "./DetailInfo/index.vue"
 
 export default {
   components: {
-    RelatedProducts
+    RelatedProducts,
+    DetailInfo
   },
   data() {
     return {

@@ -109,7 +109,7 @@ export default {
 <style lang="scss" scoped>
   .related-products {
     margin-top: 16px;
-    padding: 12px 16px;
+    // padding: 12px 16px;
     background: #ffffff;
     border-radius: 8px;
     min-height: 278px;
