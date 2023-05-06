@@ -3,6 +3,7 @@
     <ProductCategories />
     <LocationWrapper />
     <ServiceFilter />
+    <Rating />
     <Brands />
     <Providers />
     <Shipping />
@@ -14,6 +15,7 @@ import ProductCategories from './ProductCategories/index.vue'
 import LocationWrapper from './LocationWrapper/index.vue'
 import ServiceFilter from './ServiceFilter/index.vue'
 import Brands from './Brands/index.vue'
+import Rating from './Rating/index.vue'
 import Providers from './Providers/index.vue'
 import Shipping from './Shipping/index.vue'
 
@@ -22,6 +24,7 @@ export default {
     ProductCategories,
     LocationWrapper,
     ServiceFilter,
+    Rating,
     Brands,
     Providers,
     Shipping
