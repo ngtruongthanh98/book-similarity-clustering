@@ -1,14 +1,27 @@
-<script setup>
-import Navbar from './components/Navbar/index.vue'
-import UniversalFreeShip from './components/UniversalFreeShip/index.vue'
-
-</script>
-
 <template>
-  <Navbar />
-  <UniversalFreeShip />
-  <router-view />
+  <div>
+    <Navbar />
+    <UniversalFreeShip />
+    <router-view />
+    <PageFooter v-if="showFooter" />
+  </div>
 </template>
 
-<style scoped>
-</style>
+<script>
+import Navbar from './components/Navbar/index.vue';
+import UniversalFreeShip from './components/UniversalFreeShip/index.vue';
+import PageFooter from './components/PageFooter/index.vue';
+
+export default {
+  components: {
+    Navbar,
+    UniversalFreeShip,
+    PageFooter,
+  },
+  computed: {
+    showFooter() {
+      return this.$route.name !== "home";
+    },
+  },
+};
+</script>

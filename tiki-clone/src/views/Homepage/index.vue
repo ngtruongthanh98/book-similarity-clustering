@@ -10,8 +10,12 @@
         <HomeBrand />
         <GoodPriceBrand />
         <HightlightList />
-        <TodayReccomend />
+        <TodayRecommend />
+
+        <PageFooterInner class="custom-footer"/>
+
       </div>
+
 
     </div>
   </div>
@@ -25,7 +29,8 @@ import GoodPriceToday from './GoodPriceToday/index.vue'
 import HomeBrand from './HomeBrand/index.vue'
 import GoodPriceBrand from './GoodPriceBrand/index.vue'
 import HightlightList from './HightlightList/index.vue'
-import TodayReccomend from './TodayReccomend/index.vue'
+import TodayRecommend from './TodayRecommend/index.vue'
+import PageFooterInner from '../../components/PageFooterInner/index.vue'
 
 export default {
   components: {
@@ -36,7 +41,8 @@ export default {
     HomeBrand,
     GoodPriceBrand,
     HightlightList,
-    TodayReccomend
+    TodayRecommend,
+    PageFooterInner
   }
 }
 </script>
@@ -57,6 +63,10 @@ export default {
         width: 100%;
         height: 100%;
         margin-left: 24px;
+
+        .custom-footer {
+          margin-top: 0;
+        }
       }
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar-item">
+  <div class="sidebar-item" @click="onClickRouter(routeName)">
     <img class="image" :src="imageUrl" alt="Logo" height="32" width="32">
 
     <div class="name">{{ itemName }}</div>
@@ -15,6 +15,15 @@ export default {
     itemName: {
       type: String,
       default: ''
+    },
+    routeName: {
+      type: String,
+      default: 'home'
+    }
+  },
+  methods: {
+    onClickRouter(routeName) {
+      this.$router.push({ name: routeName });
     }
   }
 }
