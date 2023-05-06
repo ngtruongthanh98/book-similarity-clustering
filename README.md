@@ -1,6 +1,6 @@
 # book-similarity-clustering
 
-##Backend:
+## Backend:
 
 - install all package: pip install -r requirements.txt
 - cd backend
@@ -12,7 +12,7 @@ API:
 - Get book detail: http://127.0.0.1:5000/book/<isbn>
 - http://127.0.0.1:5000/ratings/<isbn>
 
-##Frontend:
+## Frontend:
 
 - install Node version 16+ : https://nodejs.org/en/blog/release/v16.16.0
 - cd tiki-clone
