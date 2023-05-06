@@ -5,7 +5,7 @@ import json
 combined_data = {}
 
 # Set the directory where the JSON files are stored
-directory = 'D:\Documents\Master\Mathematics\Assignment\BTL'
+directory = 'D:/Documents/Master/Mathematics/Assignment/BTL/book-similarity-clustering/graph/'
 
 # Loop through all the files in the directory
 for filename in os.listdir(directory):
