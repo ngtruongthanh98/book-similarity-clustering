@@ -7,28 +7,28 @@
             <table>
                <tbody>
                   <tr>
-                     <td>Công ty phát hành</td>
-                     <td>Nhã Nam</td>
+                     <td class="custom-item">Công ty phát hành</td>
+                     <td class="item-content">Amazon</td>
                   </tr>
                   <tr>
-                     <td>Kích thước</td>
-                     <td>14 x 20.5 cm</td>
+                     <td class="custom-item">Kích thước</td>
+                     <td class="item-content">14 x 20.5 cm</td>
                   </tr>
                   <tr>
-                     <td>Dịch Giả</td>
-                     <td>Nguyễn Bích Lan&nbsp;,&nbsp;Tô Yến Ly</td>
+                     <td class="custom-item">Dịch Giả / Tác giả</td>
+                     <td class="item-content">{{ bookAuthor }}</td>
                   </tr>
                   <tr>
-                     <td>Loại bìa</td>
-                     <td>Bìa mềm</td>
+                     <td class="custom-item">Loại bìa</td>
+                     <td class="item-content">Bìa mềm</td>
                   </tr>
                   <tr>
-                     <td>Số trang</td>
-                     <td>244</td>
+                     <td class="custom-item">Số trang</td>
+                     <td class="item-content">244</td>
                   </tr>
                   <tr>
-                     <td>Nhà xuất bản</td>
-                     <td>Nhà Xuất Bản Hội Nhà Văn</td>
+                     <td class="custom-item">Nhà xuất bản</td>
+                     <td class="item-content">{{ publisher }}</td>
                   </tr>
                </tbody>
             </table>
@@ -69,7 +69,16 @@
 </template>
 <script>
 export default {
-
+   props: {
+      publisher: {
+         type: String,
+         default: ''
+      },
+      bookAuthor: {
+         type: String,
+         default: ''
+      },
+   }
 }
 </script>
 <style lang="scss" scoped>
@@ -114,6 +123,24 @@ export default {
             border-spacing: 0px;
             line-height: 21px;
             width: 100% !important;
+
+            .custom-item {
+               width: 220px;
+               vertical-align: top;
+               color: rgb(79, 79, 79);
+               font-size: 13px;
+               font-weight: 500;
+               background: rgb(239, 239, 239);
+               padding: 10px 15px;
+            }
+
+            .item-content {
+               vertical-align: top;
+               color: rgb(79, 79, 79);
+               font-size: 13px;
+               font-weight: 500;
+               padding: 10px 15px;
+            }
           }
 
           .toggleContent__wrapper {
@@ -128,6 +155,10 @@ export default {
           }
         }
       }
+    }
+
+    .right {
+      margin-left: 8px;
     }
   }
 </style>
