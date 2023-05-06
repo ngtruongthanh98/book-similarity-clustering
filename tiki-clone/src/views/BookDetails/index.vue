@@ -149,11 +149,20 @@
             </div>
           </div>
         </div>
+
+
+        <RelatedProducts />
     </div>
   </div>
 </template>
+
 <script>
+import RelatedProducts from "./RelatedProducts/index.vue"
+
 export default {
+  components: {
+    RelatedProducts
+  },
   data() {
     return {
       productName: 'Cây Cam Ngọt Của Tôi'
@@ -614,6 +623,10 @@ export default {
                   border: none;
                   border-radius: 4px;
                   outline: none;
+
+                  &:hover {
+                    opacity: 0.8;
+                  }
                 }
 
                 .btn-add-to-cart {
