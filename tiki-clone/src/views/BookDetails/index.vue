@@ -8,7 +8,7 @@
               >
               <va-breadcrumbs-item label="Trang chủ" class="homepage-breadcrumb" @click="onClickGotoHome"/>
               <va-breadcrumbs-item label="Nhà sách Tiki" class="bookstore-breadcrumb" @click="onClickGotoBookstore" />
-              <va-breadcrumbs-item :label="productName" class="book-breadcrumb" />
+              <va-breadcrumbs-item :label="bookData.bookTitle" class="book-breadcrumb" />
           </va-breadcrumbs>
         </div>
     </div>
@@ -20,7 +20,7 @@
                 <div class="thumbnail" data-view-id="pdp_main_view_gallery">
                     <div class="imagelens__wrapper">
                       <div class="container">
-                        <img src="https://salt.tikicdn.com/cache/w1200/ts/product/5e/18/24/2a6154ba08df6ce6161c13f4303fa19e.jpg" alt="Cây Cam Ngọt Của Tôi" srcset="https://salt.tikicdn.com/cache/750x750/ts/product/5e/18/24/2a6154ba08df6ce6161c13f4303fa19e.jpg 1x, https://salt.tikicdn.com/cache/750x750/ts/product/5e/18/24/2a6154ba08df6ce6161c13f4303fa19e.jpg 2x" class="WebpImg__StyledImg-sc-h3ozu8-0 fWjUGo" style="width: 444px; height: 444px; z-index: 0;">
+                        <img :src="bookData.imageURLL" :alt="bookData.bookTitle" class="WebpImg__StyledImg-sc-h3ozu8-0 fWjUGo" style="width: 444px; height: 444px; z-index: 0;">
                       </div>
                     </div>
                 </div>
@@ -42,10 +42,10 @@
               <div class="header">
                 <div class="brand">
                     <span class="brand-and-author no-after">
-                      <h6>Tác giả:&nbsp;<a data-view-id="pdp_details_view_author" data-view-index="0" href="/author/jose-mauro-de-vasconcelos.html">José Mauro de Vasconcelos</a></h6>
+                      <h6>Tác giả:&nbsp;<a data-view-id="pdp_details_view_author" data-view-index="0" href="/author/jose-mauro-de-vasconcelos.html">{{ bookData.bookAuthor }}</a></h6>
                     </span>
                 </div>
-                <h1 class="title">Cây Cam Ngọt Của Tôi</h1>
+                <h1 class="title">{{ bookData.bookTitle }}</h1>
                 <div class="below-title">
                     <div style="display: flex;">
                       <div class="review-box">
@@ -69,21 +69,7 @@
                                   </svg>
                                 </div>
                                 <div style="width: 100%; white-space: nowrap; position: absolute; left: 0px; top: 0px; overflow: hidden;">
-                                  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" size="16" color="#fdd836" height="16" width="16" xmlns="http://www.w3.org/2000/svg" style="color: rgb(253, 216, 54);">
-                                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
-                                  </svg>
-                                  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" size="16" color="#fdd836" height="16" width="16" xmlns="http://www.w3.org/2000/svg" style="color: rgb(253, 216, 54);">
-                                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
-                                  </svg>
-                                  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" size="16" color="#fdd836" height="16" width="16" xmlns="http://www.w3.org/2000/svg" style="color: rgb(253, 216, 54);">
-                                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
-                                  </svg>
-                                  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" size="16" color="#fdd836" height="16" width="16" xmlns="http://www.w3.org/2000/svg" style="color: rgb(253, 216, 54);">
-                                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
-                                  </svg>
-                                  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" size="16" color="#fdd836" height="16" width="16" xmlns="http://www.w3.org/2000/svg" style="color: rgb(253, 216, 54);">
-                                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
-                                  </svg>
+                                  <div v-html="starNumber"></div>
                                 </div>
                             </div>
                           </div>
@@ -153,7 +139,7 @@
 
         <RelatedProducts />
 
-        <DetailInfo />
+        <DetailInfo :publisher="bookData.publisher" :bookAuthor="bookData.bookAuthor" />
     </div>
   </div>
 </template>
@@ -162,6 +148,8 @@
 import RelatedProducts from "./RelatedProducts/index.vue"
 import DetailInfo from "./DetailInfo/index.vue"
 
+import { getBookDetails } from "../../services/books"
+
 export default {
   components: {
     RelatedProducts,
@@ -169,10 +157,37 @@ export default {
   },
   data() {
     return {
-      productName: 'Cây Cam Ngọt Của Tôi'
+      productName: 'Cây Cam Ngọt Của Tôi',
+      bookData: {},
+      starNumber: ''
+    }
+  },
+  async mounted() {
+    const bookId = this.$route.params.productId;
+
+    try {
+      const res = await this.getBookDetails(bookId);
+      this.bookData = res.data;
+
+      const rating = parseFloat(this.bookData.avg_rating);
+      const numStars = Math.round(rating);
+      const stars = [];
+
+      for (let i = 0; i < numStars; i++) {
+        stars.push(
+          '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" size="16" color="#fdd836" height="16" width="16" xmlns="http://www.w3.org/2000/svg" style="color: rgb(253, 216, 54);">' +
+          '<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>' +
+          '</svg>'
+        );
+      }
+
+      this.starNumber = stars.join('');
+    } catch (err) {
+      console.error(err);
     }
   },
   methods: {
+    getBookDetails,
     onClickGotoHome() {
       this.$router.push({ name: 'home' });
     },
