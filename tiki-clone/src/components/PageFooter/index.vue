@@ -182,9 +182,7 @@ export default {
       &-container {
         display: flex;
         justify-content: space-between;
-        width: 1270px;
-        padding-left: 15px;
-        padding-right: 15px;
+        width: 1240px;
         margin-right: auto;
         margin-left: auto;
         padding: 16px 0px;
