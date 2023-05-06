@@ -1,13 +1,12 @@
 <template>
-  <div class="service-filter">
-    <h4 class="title">Dịch vụ</h4>
+  <div class="providers">
+    <h4 class="title">Nhà cung cấp</h4>
 
     <label data-view-label="Giao siêu tốc 2H">
       <label class="main-item">
         <input type="checkbox">
         <div class="service-wrap">
-          <img class="filter-icon" width="78" height="24" src="https://salt.tikicdn.com/ts/upload/b3/21/cf/c6525bcd44b3bb1b793277cc98487799.png" alt="Giao siêu tốc 2H">
-          <span>Giao siêu tốc 2H</span>
+          <span>Nhà sách Fahasa</span>
         </div>
       </label>
     </label>
@@ -16,8 +15,7 @@
       <label class="main-item">
         <input type="checkbox">
         <div class="service-wrap">
-          <img class="filter-icon" width="125" height="24" src="https://salt.tikicdn.com/ts/upload/e9/14/26/52318ad1543ad9d3ee5b633b3df0750d.png" alt="Thưởng thêm Astra">
-          <span>Thưởng Thêm Astra</span>
+          <span>Nhà Sách Vĩnh Thụy</span>
         </div>
       </label>
     </label>
@@ -26,7 +24,7 @@
       <label class="main-item">
         <input type="checkbox">
         <div class="service-wrap">
-          <span>Trả góp 0%</span>
+          <span>info book</span>
         </div>
       </label>
     </label>
@@ -36,10 +34,27 @@
       <label class="main-item">
         <input type="checkbox">
         <div class="service-wrap">
-          <span>Giảm sâu</span>
+          <span>HỆ THỐNG NHÀ SÁCH ABC</span>
         </div>
       </label>
     </label>
+
+    <label data-view-label="Giao siêu tốc 2H">
+      <label class="main-item">
+        <input type="checkbox">
+        <div class="service-wrap">
+          <span>Times Books</span>
+        </div>
+      </label>
+    </label>
+
+    <a class="toggler">
+      Xem thêm
+      <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" color="#0B74E5" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style="color: rgb(11, 116, 229);">
+        <path d="M256 294.1L383 167c9.4-9.4 24.6-9.4 33.9 0s9.3 24.6 0 34L273 345c-9.1 9.1-23.7 9.3-33.1.7L95 201.1c-4.7-4.7-7-10.9-7-17s2.3-12.3 7-17c9.4-9.4 24.6-9.4 33.9 0l127.1 127z">
+        </path>
+      </svg>
+    </a>
 
   </div>
 </template>
@@ -49,7 +64,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .service-filter {
+  .providers {
     padding: 0px 16px 12px;
     border-top: 1px solid rgb(247, 247, 247);
 
@@ -115,6 +130,21 @@ export default {
             position: relative;
           }
         }
+      }
+    }
+
+    .toggler {
+      font-size: 12px;
+      font-weight: 500;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      line-height: 16px;
+      color: rgb(11, 116, 229);
+      cursor: pointer;
+
+      > svg {
+        margin-left: 5.5px;
       }
     }
   }

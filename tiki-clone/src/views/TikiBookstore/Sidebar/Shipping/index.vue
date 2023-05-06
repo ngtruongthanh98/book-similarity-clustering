@@ -1,42 +1,21 @@
 <template>
-  <div class="service-filter">
-    <h4 class="title">Dịch vụ</h4>
+  <div class="shipping">
+    <h4 class="title">Giao hàng</h4>
 
     <label data-view-label="Giao siêu tốc 2H">
       <label class="main-item">
-        <input type="checkbox">
+        <input type="radio">
         <div class="service-wrap">
-          <img class="filter-icon" width="78" height="24" src="https://salt.tikicdn.com/ts/upload/b3/21/cf/c6525bcd44b3bb1b793277cc98487799.png" alt="Giao siêu tốc 2H">
-          <span>Giao siêu tốc 2H</span>
+          <span>Hàng Nội Địa</span>
         </div>
       </label>
     </label>
 
     <label data-view-label="Giao siêu tốc 2H">
       <label class="main-item">
-        <input type="checkbox">
+        <input type="radio">
         <div class="service-wrap">
-          <img class="filter-icon" width="125" height="24" src="https://salt.tikicdn.com/ts/upload/e9/14/26/52318ad1543ad9d3ee5b633b3df0750d.png" alt="Thưởng thêm Astra">
-          <span>Thưởng Thêm Astra</span>
-        </div>
-      </label>
-    </label>
-
-    <label data-view-label="Giao siêu tốc 2H">
-      <label class="main-item">
-        <input type="checkbox">
-        <div class="service-wrap">
-          <span>Trả góp 0%</span>
-        </div>
-      </label>
-    </label>
-
-
-    <label data-view-label="Giao siêu tốc 2H">
-      <label class="main-item">
-        <input type="checkbox">
-        <div class="service-wrap">
-          <span>Giảm sâu</span>
+          <span>Hàng Quốc Tế</span>
         </div>
       </label>
     </label>
@@ -49,7 +28,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .service-filter {
+  .shipping {
     padding: 0px 16px 12px;
     border-top: 1px solid rgb(247, 247, 247);
 
