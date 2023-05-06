@@ -14,16 +14,22 @@
 
     <div class="tiki-bookstore-page__body">
       <Sidebar />
+
+      <div class="main">
+        <ProductContainer />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Sidebar from './Sidebar/index.vue'
+import ProductContainer from './ProductContainer/index.vue'
 
 export default {
   components: {
-    Sidebar
+    Sidebar,
+    ProductContainer
   },
   methods: {
     onClickGotoHome() {
@@ -77,6 +83,8 @@ export default {
       padding-right: 15px;
       margin-right: auto;
       margin-left: auto;
+
+      display: flex;
     }
   }
 </style>
