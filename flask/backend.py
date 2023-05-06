@@ -55,8 +55,16 @@ def get_book_by_id(isbn):
     # filter the DataFrame to find the record with the given ID
     record = books.loc[books['ISBN'] == isbn].rename(columns=mapping).to_dict(
         'records')
+
+    # filter the ratings DataFrame to find the records with the given ISBN
+    ratings_for_isbn = ratings.loc[ratings['ISBN'] == isbn]
+    # calculate the average rating
+    avg_rating = ratings_for_isbn['Book-Rating'].mean()
+    # add the average rating to the book record
+
     # return the record as JSON if found, or a 404 error if not found
     if len(record) > 0:
+        record[0]['avg_rating'] = math.ceil(avg_rating/2)
         return jsonify(record[0])
     else:
         return jsonify({'error': 'Record not found'}), 404
