@@ -2,7 +2,7 @@
   <div class="page-footer-inner">
     <div class="information">
       <div class="information-container">
-        <div class="block" style="width:268px">
+        <div class="block" style="width:213px">
           <h4 class="block__title">Hỗ trợ khách hàng</h4>
           <p class="hotline">Hotline: <a href="tel:1900-6035">1900-6035</a><span class="small-text">(1000 đ/phút, 8-21h kể cả T7, CN)</span></p>
           <a rel="noreferrer" href="https://hotro.tiki.vn/s/" class="small-text" target="_blank">Các câu hỏi thường gặp</a>
@@ -18,7 +18,7 @@
         </div>
 
 
-        <div class="block">
+        <div class="block" style="width:180px">
           <h4 class="block__title">Về Tiki</h4>
           <a rel="noreferrer" href="https://tiki.vn/thong-tin/gioi-thieu-ve-tiki" class="small-text" target="_blank">Giới thiệu Tiki</a>
           <a rel="noreferrer" href="https://tiki.vn/blog/" class="small-text" target="_blank">Tiki Blog</a>
@@ -294,7 +294,7 @@ export default {
           }
 
           &.payment-information {
-            width: 180px;
+            width: 180px !important;
           }
         }
       }

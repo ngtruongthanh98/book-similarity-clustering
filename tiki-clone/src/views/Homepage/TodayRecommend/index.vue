@@ -481,7 +481,7 @@ export default {
     margin-top: 16px;
     border-radius: 8px;
 
-    margin-bottom: 16px;
+    margin-bottom: 32px;
 
     &__header {
       position: initial;

@@ -33,7 +33,7 @@
 
         <div class="title">Giao đến:</div>
 
-        <div class="address">H. Nhà Bè, X. Phước Kiển, Hồ Chí Minh</div>
+        <div class="address">Q. 1, P. Bến Nghé, Hồ Chí Minh</div>
       </div>
     </div>
   </div>
@@ -184,6 +184,7 @@ export default {
 
     .address-container {
       display: flex;
+      justify-content: end;
       margin-top: 8px;
       width: 350px;
 

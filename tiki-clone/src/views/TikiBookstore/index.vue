@@ -11,10 +11,20 @@
         </va-breadcrumbs>
       </div>
     </div>
+
+    <div class="tiki-bookstore-page__body">
+      <Sidebar />
+    </div>
   </div>
 </template>
+
 <script>
+import Sidebar from './Sidebar/index.vue'
+
 export default {
+  components: {
+    Sidebar
+  },
   methods: {
     onClickGotoHome() {
       this.$router.push({ name: 'home' });
@@ -59,6 +69,14 @@ export default {
           }
         }
       }
+    }
+
+    &__body {
+      width: 1270px;
+      padding-left: 15px;
+      padding-right: 15px;
+      margin-right: auto;
+      margin-left: auto;
     }
   }
 </style>
