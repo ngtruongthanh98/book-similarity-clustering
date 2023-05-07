@@ -13,5 +13,5 @@ for key in keys_to_drop:
     del data[key]
 
 # Write the modified data back to the JSON file
-with open('preprocessed_reduce.json', 'w') as f:
+with open('preprocessed_reduce_2.json', 'w') as f:
     json.dump(data, f)

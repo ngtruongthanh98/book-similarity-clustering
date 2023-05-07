@@ -4,7 +4,7 @@ import networkx as nx
 import community
 
 # Load JSON data into a Python dictionary
-with open('preprocessed_old.json', 'r') as f:
+with open('preprocessed_reduce.json', 'r') as f:
     data = json.load(f)
 
 # Convert the combined data to a list of edges
