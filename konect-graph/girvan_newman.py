@@ -1,21 +1,19 @@
 import matplotlib.pyplot as plt
-import json
+import pandas as pd
 import networkx as nx
 import community
 
-# Load JSON data into a Python dictionary
-with open('preprocessed_reduce.json', 'r') as f:
-    data = json.load(f)
+# Read the dataset from a file and create a DataFrame
+df = pd.read_csv('out.dimacs10-polbooks.csv', header=None,
+                 names=['source', 'target'])
 
-# Convert the combined data to a list of edges
 edges = []
-for key, value in data.items():
-    nodes = key.split('-')
-    edge = (nodes[0], nodes[1], value)
+for index, row in df.iterrows():
+    edge = (row['source'], row['target'])
     edges.append(edge)
-
+# Create a networkx graph from the DataFrame
 G = nx.Graph()
-G.add_weighted_edges_from(edges)
+G.add_edges_from(edges)
 
 
 def girvan_newman_algorithm(G):
@@ -42,6 +40,17 @@ def girvan_newman_algorithm(G):
 
 # run the Girvan-Newman algorithm on a test graph
 communities = girvan_newman_algorithm(G)
+
+partition_formatted = {}
+
+for i, d in enumerate(communities):
+    for v in d:
+        partition_formatted[v] = i
+
+print("🚀 ~ file: louvain.py:24 ~ partition_formatted:", partition_formatted)
+modularity = community.modularity(partition_formatted, G)
+
+print('Modularity of the best partition:', modularity)
 
 # plot the graph with nodes colored by their community membership
 pos = nx.spring_layout(G)

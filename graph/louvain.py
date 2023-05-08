@@ -10,8 +10,6 @@ with open('./preprocessed_reduce.json', 'r') as f:
 # Convert the combined data to a list of edges
 edges = []
 for key, value in data.items():
-    if value < 10:
-        continue
     nodes = key.split('-')
     edge = (nodes[0], nodes[1], value)
     edges.append(edge)
