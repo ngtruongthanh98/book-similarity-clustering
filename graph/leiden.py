@@ -1,24 +1,33 @@
+import random
 import json
 import networkx as nx
 import community
 from cdlib import algorithms, evaluation
+import pickle
+from networkx.algorithms.community.quality import modularity
+import matplotlib.pyplot as plt
 
-# Load JSON data into a Python dictionary
-with open('./graph/preprocessed.json', 'r') as f:
-    data = json.load(f)
+filename = 'preprocessed_reduce_4'
+G = pickle.load(open(f'{filename}.pickle', 'rb'))
 
-# Convert the combined data to a list of edges
-edges = []
-for key, value in data.items():
-    nodes = key.split('-')
-    edge = (nodes[0], nodes[1], value)
-    edges.append(edge)
-
-# Create a graph and add the edges
-G = nx.Graph()
-G.add_weighted_edges_from(edges)
+# print number of edges and nodes
+print("Number of edges:", G.number_of_edges())
+print("Number of nodes:", G.number_of_nodes())
 
 partition = algorithms.leiden(G)
 
-ave = evaluation.avg_embeddedness(G, partition)
-print("🚀 ~ file: surprise_community_detection.py:24 ~ ave:", ave)
+mod = modularity(G, partition.communities)
+
+
+# plot the graph with nodes colored by their community membership
+pos = nx.spring_layout(G)
+# Define a list of random colors
+colors = ["#"+''.join([random.choice('0123456789ABCDEF')
+                      for j in range(6)]) for i in range(len(partition.communities))]
+for i, community in enumerate(partition.communities):
+    nx.draw_networkx_nodes(G, pos, nodelist=list(
+        community), node_color=colors[i % len(colors)], node_size=30)
+
+edge_subset = random.sample(G.edges(), 500)
+nx.draw_networkx_edges(G, pos=pos)
+plt.show()
