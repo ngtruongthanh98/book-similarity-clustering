@@ -47,7 +47,6 @@ for i, d in enumerate(communities):
     for v in d:
         partition_formatted[v] = i
 
-print("🚀 ~ file: louvain.py:24 ~ partition_formatted:", partition_formatted)
 modularity = community.modularity(partition_formatted, G)
 
 print('Modularity of the best partition:', modularity)
