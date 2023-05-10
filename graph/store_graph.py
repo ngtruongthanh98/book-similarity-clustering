@@ -3,7 +3,7 @@ import networkx as nx
 import pickle
 
 # Load JSON data into a Python dictionary
-file_name = 'preprocessed_reduce'
+file_name = 'preprocessed_reduce_4'
 with open(f'./{file_name}.json', 'r') as f:
     data = json.load(f)
 
@@ -11,11 +11,11 @@ with open(f'./{file_name}.json', 'r') as f:
 edges = []
 for key, value in data.items():
     nodes = key.split('-')
-    edge = (nodes[0], nodes[1], value)
+    edge = (nodes[0], nodes[1])
     edges.append(edge)
 
 # Create a graph and add the edges
 G = nx.Graph()
-G.add_weighted_edges_from(edges)
+G.add_edges_from(edges)
 
 pickle.dump(G, open(f'{file_name}.pickle', 'wb'))

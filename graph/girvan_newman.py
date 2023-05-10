@@ -1,21 +1,11 @@
 import matplotlib.pyplot as plt
-import json
+import random
 import networkx as nx
 import community
+import pickle
 
-# Load JSON data into a Python dictionary
-with open('preprocessed_reduce.json', 'r') as f:
-    data = json.load(f)
-
-# Convert the combined data to a list of edges
-edges = []
-for key, value in data.items():
-    nodes = key.split('-')
-    edge = (nodes[0], nodes[1], value)
-    edges.append(edge)
-
-G = nx.Graph()
-G.add_weighted_edges_from(edges)
+filename = 'preprocessed_reduce_3'
+G = pickle.load(open(f'{filename}.pickle', 'rb'))
 
 
 def girvan_newman_algorithm(G):
@@ -42,12 +32,17 @@ def girvan_newman_algorithm(G):
 
 # run the Girvan-Newman algorithm on a test graph
 communities = girvan_newman_algorithm(G)
+pickle.dump(communities, open(
+    f'girvan_newman.pickle', 'wb'))
 
 # plot the graph with nodes colored by their community membership
 pos = nx.spring_layout(G)
-colors = ['r', 'g', 'b', 'y', 'c', 'm']
+# Define a list of random colors
+colors = ["#"+''.join([random.choice('0123456789ABCDEF')
+                      for j in range(6)]) for i in range(len(communities))]
 for i, community in enumerate(communities):
     nx.draw_networkx_nodes(G, pos, nodelist=list(
         community), node_color=colors[i % len(colors)], node_size=30)
 nx.draw_networkx_edges(G, pos=pos)
 plt.show()
+print('')
