@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 import pandas as pd
 import math
 from flask_cors import CORS
+import pickle
 
 app = Flask(__name__)
 CORS(app)
@@ -16,9 +17,16 @@ ratings = pd.read_csv('../database/ratings.csv', delimiter=';',
 users = pd.read_csv('../database/users.csv', delimiter=';',
                     encoding='ISO-8859-1')
 
+louvain = pickle.load(
+    open(f'../graph/louvain.pickle', 'rb'))
+
+leiden = pickle.load(
+    open(f'../graph/leiden.pickle', 'rb'))
+
+girvan_newman = pickle.load(
+    open(f'../graph/girvan_newman.pickle', 'rb'))
+
 # define a function to convert snake case to camel case with hyphens
-
-
 def snake_to_camel_with_hyphens(text):
     parts = text.split('-')
     return parts[0].lower() + ''.join(x for x in parts[1:])
@@ -90,6 +98,28 @@ def get_ratings_by_isbn(isbn):
     else:
         return jsonify({'error': 'No ratings found for ISBN {}'.format(isbn)}), 404
 
+@app.route('/<string:algorithm>/<string:isbn>')
+def check_book(algorithm, isbn):
+    if algorithm == 'louvain':
+        for community in louvain:
+            if isbn in community:
+                records = books[books['ISBN'].isin(list(community))].rename(columns=mapping).to_dict('records')
+                return jsonify(records)
+
+    if algorithm == 'leiden':
+        for community in leiden.communities:
+            if isbn in community:
+                records = books[books['ISBN'].isin(list(community))].rename(columns=mapping).to_dict('records')
+                return jsonify(records)
+            
+    if algorithm == 'girvan_newman':
+        for community in girvan_newman:
+            if isbn in community:
+                records = books[books['ISBN'].isin(list(community))].rename(columns=mapping).to_dict('records')
+                return jsonify(records)
+
+    else:
+        return f"Invalid algorithm: {algorithm}."
 
 if __name__ == '__main__':
     app.run(debug=True)
