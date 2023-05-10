@@ -33,4 +33,6 @@ for i, community in enumerate(partition):
 
 edge_subset = random.sample(G.edges(), 500)
 nx.draw_networkx_edges(G, edgelist=edge_subset, pos=pos)
+plt.ioff()
+plt.title('louvain result')
 plt.show()
