@@ -16,8 +16,12 @@ print("Number of nodes:", G.number_of_nodes())
 
 partition = algorithms.leiden(G)
 
+pickle.dump(partition, open(
+    f'leiden.pickle', 'wb'))
+
 mod = modularity(G, partition.communities)
 
+print('Modularity of the best partition:', mod)
 
 # plot the graph with nodes colored by their community membership
 pos = nx.spring_layout(G)
@@ -30,4 +34,6 @@ for i, community in enumerate(partition.communities):
 
 edge_subset = random.sample(G.edges(), 500)
 nx.draw_networkx_edges(G, pos=pos)
+plt.ioff()
+plt.title('leiden result')
 plt.show()
