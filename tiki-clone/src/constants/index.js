@@ -172,3 +172,9 @@ export const HOME_SIDEBAR = {
     }
   ]
 }
+
+export const ALGORITHM_NAME = {
+  louvain: 'Louvain',
+  leiden: 'Leiden',
+  girvan_newman: 'Girvan Newman',
+}
