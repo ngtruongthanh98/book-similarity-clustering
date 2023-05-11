@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="info">
-                    <p class="price"><span>{{ ele.price || 150.000 }} <sup> ₫</sup></span></p>
+                    <p class="price"><span>{{ ele.price || '150.000' }} <sup> ₫</sup></span></p>
                     <div class="book-title" style="max-height: 40px; height: auto;">
                       {{ ele.bookTitle }}
                     </div>
@@ -133,7 +133,6 @@ export default {
 
 
     const res = await this.getSimilarBooks(this.isbn, this.algoName)
-    console.log('res: ', res);
     this.similarBooksList = res.data
 
     this.firstSixItems = this.similarBooksList.slice(0, 6);

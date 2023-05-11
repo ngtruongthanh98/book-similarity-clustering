@@ -128,6 +128,15 @@
                   </div>
                 </div>
 
+                <va-counter
+                  v-model="counterValue"
+                  :min="0"
+                  :max="100"
+                  :step="1"
+                  margins="0"
+                  color="#262824"
+                />
+
                 <div class="add-to-cart">
                   <div class="group-button"><button type="button" class="btn btn-add-to-cart" data-view-id="pdp_add_to_cart_button">Chọn mua</button></div>
                 </div>
@@ -164,7 +173,8 @@ export default {
       productName: 'Cây Cam Ngọt Của Tôi',
       bookData: {},
       starNumber: '',
-      bookId: ''
+      bookId: '',
+      counterValue: 0
     }
   },
   watch: {
