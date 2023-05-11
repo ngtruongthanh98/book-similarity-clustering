@@ -1,28 +1,28 @@
 <template>
   <div class="related-products">
-    <div class="title">Sản Phẩm Tương Tự</div>
+    <div class="title">Sản Phẩm Tương Tự ({{ fullAlgorithmName }})</div>
 
     <div class="image-container">
-      <div class="related-book" v-for="(ele, index) in RELATED_PRODUCTS_LIST" :key="index" @click="onClickProductDetail(ele.productId)">
+      <div class="related-book" v-for="(ele, index) in firstSixItems" :key="index" @click="onClickProductDetail(ele.isbn)">
         <div class="image-item" style="width: 100%; height: 100%;">
           <div class="item__wrapper" style="padding: 12px;">
               <div style="width: 100%; height: 100%;">
                 <div class="product-image__wrapper">
                     <div class="thumbnail-wrapper">
-                      <img :alt="ele.name" :src="ele.imageUrl">
+                      <img :alt="ele.bookTitle" :src="ele.imageURLL">
                     </div>
                 </div>
                 <div class="info">
-                    <p class="price"><span>{{ ele.price }} <sup> ₫</sup></span></p>
+                    <p class="price"><span>{{ ele.price || 150.000 }} <sup> ₫</sup></span></p>
                     <div class="book-title" style="max-height: 40px; height: auto;">
-                      {{ ele.name }}
+                      {{ ele.bookTitle }}
                     </div>
                     <div class="bottom" style="flex: unset;">
                       <div class="item-review">
                           <div style="display: flex;">
                             <div class="full-rating">
                                 <div class="total" style="display: flex; align-items: center;">
-                                  <span style="font-weight: 400; font-size: 12px; line-height: 16px; color: rgb(128, 128, 137);">{{ ele.rating }}</span>
+                                  <span style="font-weight: 400; font-size: 12px; line-height: 16px; color: rgb(128, 128, 137);">{{ ele.rating || '3' }}</span>
                                   <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" size="14" color="#fdd836" height="14" width="14" xmlns="http://www.w3.org/2000/svg" style="color: rgb(253, 216, 54);">
                                       <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
                                   </svg>
@@ -31,7 +31,7 @@
                           </div>
                           <div style="display: flex; align-items: center; color: rgb(128, 128, 137); line-height: normal; font-size: 12px; padding-left: 4px;">
                             <div style="width: 1px; height: 9px; background-color: rgb(199, 199, 199);"></div>
-                            <div data-view-id="pdp_quantity_sold" style="padding-left: 6px;">Đã bán {{ ele.sold }}</div>
+                            <div data-view-id="pdp_quantity_sold" style="padding-left: 6px;">Đã bán {{ ele.sold || '1000+' }}</div>
                           </div>
                       </div>
                     </div>
@@ -44,9 +44,26 @@
   </div>
 </template>
 <script>
+import { ALGORITHM_NAME } from '../../../constants'
+import { getSimilarBooks, getBookDetails } from "../../../services/books"
+// import store from '../../../store'
+
 export default {
+  props: {
+    algoName: {
+      type: String,
+      default: ''
+    },
+    isbn: {
+        type: String,
+        default: '0195153448'
+    },
+  },
   data() {
     return {
+      fullAlgorithmName: '',
+      similarBooksList: [],
+      firstSixItems: [],
       RELATED_PRODUCTS_LIST: [
         {
           imageUrl: 'https://salt.tikicdn.com/cache/280x280/ts/product/24/bb/95/4d5ac1d595f8b1a73f3e7122f388d271.jpg.webp',
@@ -99,8 +116,35 @@ export default {
       ]
     }
   },
+  async mounted() {
+    if (this.algoName === 'leiden') {
+      this.fullAlgorithmName = ALGORITHM_NAME.leiden
+    }
+
+    if (this.algoName === 'louvain') {
+      this.fullAlgorithmName = ALGORITHM_NAME.louvain
+    }
+
+    if (this.algoName === 'girvan_newman') {
+      this.fullAlgorithmName = ALGORITHM_NAME.girvan_newman
+    }
+
+    console.log('this.isbn: ', this.isbn);
+
+
+    const res = await this.getSimilarBooks(this.isbn, this.algoName)
+    console.log('res: ', res);
+    this.similarBooksList = res.data
+
+    this.firstSixItems = this.similarBooksList.slice(0, 6);
+
+  },
   methods: {
-    onClickProductDetail(productId) {
+    getSimilarBooks,
+    getBookDetails,
+    async onClickProductDetail(productId) {
+      console.log('productId: ', productId);
+
       this.$router.push(`/nha-sach-tiki/${productId}`);
     }
   }
