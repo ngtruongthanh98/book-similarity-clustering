@@ -18,13 +18,13 @@ users = pd.read_csv('../database/users.csv', delimiter=';',
                     encoding='ISO-8859-1')
 
 louvain = pickle.load(
-    open(f'../graph/louvain.pickle', 'rb'))
+    open(f'../database/louvain.pickle', 'rb'))
 
 leiden = pickle.load(
-    open(f'../graph/leiden.pickle', 'rb'))
+    open(f'../database/leiden.pickle', 'rb'))
 
 girvan_newman = pickle.load(
-    open(f'../graph/girvan_newman.pickle', 'rb'))
+    open(f'../database/girvan_newman.pickle', 'rb'))
 
 # define a function to convert snake case to camel case with hyphens
 def snake_to_camel_with_hyphens(text):
